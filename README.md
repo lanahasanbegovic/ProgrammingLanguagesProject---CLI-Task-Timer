@@ -10,7 +10,7 @@ Here are the key features of the CLI task timer project:
 - Start Timer: Begin tracking time for a specific task.
 - Stop Timer: Stop tracking time once the task is completed.
 - Task Log: View a list of all tasks with the corresponding time spent on each.
-- Ephemeral Task Data: Task data is available during the current session, providing a simple, clean tracking experience without stored data.
+- Ephemeral Task Data: Task data is only available during the current session, providing a simple, clean tracking experience without stored data.
 # Technologies used
 1. C#: For building the command-line interface and task timer functionality using the .NET framework.
 2. JavaScript: Using Node.js to handle CLI operations and manage the task timer.
