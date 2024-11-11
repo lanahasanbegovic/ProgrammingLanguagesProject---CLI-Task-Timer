@@ -9,8 +9,10 @@ The CLI Task Timer is a command-line tool developed using C#, JavaScript, and Py
 Here are the key features of the CLI task timer project:
 - Start Timer: Begin tracking time for a specific task.
 - Stop Timer: Stop tracking time once the task is completed.
+- Pause Timer: Temporarily stop the timer for a task. Users can then resume the timer later, allowing breaks without affecting the total tracked time.
+- Continue Timer: Resume tracking time after a pause. This adds flexibility for tasks that might be interrupted.
 - Task Log: View a list of all tasks with the corresponding time spent on each.
-- Ephemeral Task Data: Task data is only available during the current session, providing a simple, clean tracking experience without stored data.
+- Persistent Task Data: Task data is stored in a JSON file, allowing users to track their tasks across sessions. Each session's data is appended to or loaded from this JSON file, providing a way to keep track of task history.
 # Technologies used
 1. C#: For building the command-line interface and task timer functionality using the .NET framework.
 2. JavaScript: Using Node.js to handle CLI operations and manage the task timer.
@@ -30,11 +32,10 @@ Here are the key features of the CLI task timer project:
    - For Python:
      python task_timer.py
 4. Using the Program:  
-   - To start a task timer, use the command:
-     tasktimer start "Task Name"
-   - To stop a task timer, use the command:
-     tasktimer stop "Task Name"
-   - To view the task log, use the command:
-     tasktimer log
+   - Starting a Task: Begin tracking time for a task by using the start command, followed by the task’s name. This will start the timer for that specific task.
+   - Pausing a Task: If you need to take a break, you can pause the timer for an ongoing task. This will temporarily halt time tracking but will keep the task active in the system.
+   - Resuming a Task: When ready to continue working on a paused task, use the resume command. This will restart time tracking from where it left off, without resetting the accumulated time.
+   - Stopping a Task: Once you’ve completed a task, you can stop the timer. This will finalize the tracked time for the task and store it, including any pauses.
+   - Viewing the Task Log: To see a summary of all tasks and the time spent on each, use the log command. This will display details for each task, including total time and any pauses, and the information is saved in a JSON format for future reference
      
-Once you're finished, you can close the terminal to exit the program. Note that task data is only available during the current session and will be deleted when the program is closed
+Once you're finished, simply close the terminal to exit the program. All data will be saved in a JSON format, allowing you to access your task records at any time.
