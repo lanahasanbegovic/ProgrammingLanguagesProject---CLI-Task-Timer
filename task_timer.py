@@ -128,8 +128,6 @@ class Timer:
                 self.clear_logs()
             elif command == "quit":
                 if self.elapsed_time > 0 or self.running:
-                    if self.running:
-                        self.stop()
                     self.log_session("N/A")
                 print("Exiting the application.")
                 break
