@@ -89,6 +89,7 @@ class Timer:
                 print("Log deleted successfully.")
             except (ValueError, IndexError):
                 print("Invalid input. Please enter a valid task number.")
+                self.delete_logs()
 
     def clear_logs(self):
         if not self.logs:
@@ -103,7 +104,8 @@ class Timer:
             elif choice == "n":
                 print("Logs not cleared.")
             else:
-                print("Invalid input.")
+                print("Invalid input. Try again.")
+                choice = input().strip().lower()
 
     def menu(self):
         print("\nSelect an action: start, stop, reset, log, show, delete, clear, quit")
