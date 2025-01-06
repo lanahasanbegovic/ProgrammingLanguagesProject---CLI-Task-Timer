@@ -46,10 +46,10 @@ class Timer:
             print("Timer reset.")
 
     def log_session(self, task_name):
-        if not self.running:
-            print("You cannot log a task while the timer is not running.")
+        if self.elapsed_time == 0:
+            print("The time cannot be saved")
             return
-
+        
         while not task_name.strip():
             print("Task name cannot be empty. Please try again.")
             task_name = input("Enter task name: ").strip()
