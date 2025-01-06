@@ -46,7 +46,7 @@ class Timer:
             print("Timer reset.")
 
     def log_session(self, task_name):
-        if self.elapsed_time == 0:
+        if self.elapsed_time == None:
             print("The time cannot be saved")
             return
         
