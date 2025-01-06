@@ -1,4 +1,5 @@
-﻿class TaskTimer
+using System.Text.Json;
+class TaskTimer
 {
     private DateTime? startTime;
     private double elapsedTime;
@@ -6,7 +7,7 @@
     private List<LogEntry> logs;
     private readonly string logFile;
 
-    public TaskTimer(string logFile = "timer_logs.txt")
+    public TaskTimer(string logFile = "timer_logs.json")
     {
         this.logFile = logFile;
         logs = LoadLogs();
@@ -16,41 +17,27 @@
 
     private List<LogEntry> LoadLogs()
     {
-        var loadedLogs = new List<LogEntry>();
-
         if (File.Exists(logFile))
         {
             try
             {
-                foreach (var line in File.ReadAllLines(logFile))
-                {
-                    var parts = line.Split('|');
-                    if (parts.Length == 2)
-                    {
-                        loadedLogs.Add(new LogEntry { TaskName = parts[0], TimeSpent = parts[1] });
-                    }
-                }
-            }
+                var json= File.ReadAllText(logFile);
+                return JsonSerializer.Deserialize<List<LogEntry>>(json) ?? new List<LogEntry>();
             catch
             {
                 Console.WriteLine("Error reading logs. Starting with an empty log.");
             }
         }
 
-        return loadedLogs;
+        return new List<LogEntry>();
     }
 
     private void SaveLogs()
     {
         try
         {
-            using (var writer = new StreamWriter(logFile))
-            {
-                foreach (var log in logs)
-                {
-                    writer.WriteLine($"{log.TaskName}|{log.TimeSpent}");
-                }
-            }
+             var json = JsonSerializer.Serialize(logs, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(logFile, json);
         }
         catch
         {
