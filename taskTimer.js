@@ -57,10 +57,7 @@ class TaskTimer {
     }
 
     logSession(taskName) {
-        if (!this.running) {
-            console.log("You cannot log a task while the timer is not running.");
-            return;
-        }
+
     
         if (this.elapsedTime === 0) {
             console.log("Cannot save an empty log. No time has been recorded.");
